@@ -11,19 +11,38 @@
  * specific language governing permissions and limitations under the License.
  */
 
-package sample.web.ui;
+package sample.domain;
+
+import java.util.Calendar;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  * @author Rob Winch
  */
-public interface MessageRepository {
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+public class Message {
 
-	Iterable<Message> findAll();
+	@Id
+	@GeneratedValue
+	private Long id;
 
-	Message save(Message message);
+	@NotEmpty(message = "Message is required.")
+	private String text;
 
-	Message findMessage(Long id);
+	@NotEmpty(message = "Summary is required.")
+	private String summary;
 
-	void deleteMessage(Long id);
+	private Calendar created = Calendar.getInstance();
 
 }

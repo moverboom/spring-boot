@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package sample.web.ui;
+package sample;
 
 import java.net.URI;
 
